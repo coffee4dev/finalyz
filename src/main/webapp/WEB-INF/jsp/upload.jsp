@@ -8,6 +8,14 @@
 </head>
 <body>
 <div class="container">
+	<form action="fup" method="post" enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="fInput">Upload a csv file</label>
+			<input type="file" name="file" id="fInput" />
+		</div>
+		<button type="submit" class="btn btn-default">Up!</button>
+	</form>
+	<c:if test="${!empty expenses}">
 	<table class="table table-striped">
 		<c:forEach items="${expenses}" var="ex">
 			<tr>
@@ -19,7 +27,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-<%-- 	<p>${fcontent}</p> --%>
+	</c:if>
 </div>
 </body>
 </html>

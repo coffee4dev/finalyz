@@ -22,14 +22,13 @@ public class FileUploadController {
 	
 	@Autowired
 	ExpenseService expenseSvc;
-	
+		
 	@RequestMapping(value = "/fup", method = RequestMethod.POST)
 	public String uploadFile(@RequestParam MultipartFile file, Model model) throws IOException {
 		
 		String content = new String(file.getBytes(), StandardCharsets.UTF_8);
 		uploadParser.parseCSV(content);
 		
-		model.addAttribute("fcontent", content);
 		model.addAttribute("expenses", expenseSvc.findAll());
 		return "upload";
 	}
