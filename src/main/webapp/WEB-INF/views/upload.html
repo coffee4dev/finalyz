@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>File Uploaded</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<form action="fup" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="fInput">Upload a csv file</label>
+				<input type="file" name="file" id="fInput" />
+			</div>
+			<button type="submit" class="btn btn-default">Up!</button>
+		</form>
+		<table class="table table-striped" th:unless="${#lists.isEmpty(expenses)}">
+			<tr th:each="ex : ${expenses}">
+				<td th:text="${ex.date}">date</td>
+				<td th:text="${ex.amount}">amount</td>
+				<td th:text="${ex.currency}">currency</td>
+				<td><mark th:each="tag : ${ex.tags}" th:text="${tag.name} "></mark></td>
+				<td th:text="${ex.description}">description</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
