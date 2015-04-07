@@ -68,6 +68,7 @@ public class AppConfig extends WebMvcConfigurerAdapter implements WebApplication
 		resolver.setTemplateEngine(templateEngine());
 		resolver.setCharacterEncoding("UTF-8");
 		resolver.setOrder(1);
+		resolver.setCache(false);
 		return resolver;
 	}
 	
@@ -91,7 +92,8 @@ public class AppConfig extends WebMvcConfigurerAdapter implements WebApplication
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.apache.derby.jdbc.EmbeddedDriver");
-		dataSource.setUrl("jdbc:derby:/home/sv/dev/db/finalyz;create=true");
+//		dataSource.setUrl("jdbc:derby:/home/sv/dev/db/finalyz;create=true");
+		dataSource.setUrl("jdbc:derby:memory:finalyz;create=true");
 		dataSource.setUsername("sv");
 		dataSource.setPassword("eatme");
 		return dataSource;
